@@ -23,11 +23,11 @@ const Footer = () => {
             <div>
                 <h1 className='text-primary text-4xl md:text-5xl pb-8'>Connect with Us</h1>
                 <form className='space-y-4'>
-                    <input className='bg-white w-96 py-2 px-3 rounded-xl focus:outline-primary' type="text" name="name" id="" placeholder='Name' />
+                    <input className='bg-white w-96 py-2 px-3 rounded-xl focus:outline-primary' type="text" name="name" id="name" placeholder='Name' />
                     <br />
-                    <input className='bg-white w-96 py-2 px-3 rounded-xl focus:outline-primary' type="email" name="email" id="" placeholder='Email' />
+                    <input className='bg-white w-96 py-2 px-3 rounded-xl focus:outline-primary' type="email" name="email" id="email" placeholder='Email' />
                     <br />
-                    <textarea className='bg-white w-96 py-2 px-3 rounded-xl focus:outline-primary resize-none' name="textArea" id="" cols="10" rows="4" placeholder='Your Message'></textarea>
+                    <textarea className='bg-white w-96 py-2 px-3 rounded-xl focus:outline-primary resize-none' name="textArea" id="textArea" cols="10" rows="4" placeholder='Your Message'></textarea>
                     <br />
                     <button className='py-2 px-5 text-2xl text-primary rounded-2xl border-2 hover:text-white hover:bg-primary'>Send message</button>
                 </form>
