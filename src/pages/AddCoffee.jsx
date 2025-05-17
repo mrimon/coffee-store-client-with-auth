@@ -21,9 +21,11 @@ const AddCoffee = () => {
             .then(data => {
                 if (data.insertedId) {
                     Swal.fire({
-                        title: "Successfully added!",
+                        position: "top-end",
                         icon: "success",
-                        draggable: true
+                        title: "Your coffee successfully saved",
+                        showConfirmButton: false,
+                        timer: 2000
                     });
                 }
                 console.log('after add coffee', data);
