@@ -10,13 +10,21 @@ const SignUp = () => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const { email, password, ...userInfo } = Object.fromEntries(formData.entries());
+        const { email, password, ...restFormData } = Object.fromEntries(formData.entries());
+
 
 
         // create user
         createUser(email, password)
             .then(result => {
                 console.log(result.user);
+
+                const userInfo = {
+                    email,
+                    ...restFormData,
+                    creationTime: result.user?.metadata?.creationTime,
+                    lastSignInTime: result.user?.metadata?.lastSignInTime, 
+                }
 
                 // send user data to DB
                 fetch('http://localhost:3000/users', {
@@ -28,7 +36,6 @@ const SignUp = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log('after saving data', data);
                         if (data.insertedId) {
                             Swal.fire({
                                 position: "top-end",
@@ -37,6 +44,7 @@ const SignUp = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
+                            form.reset()
                         }
                     })
             })
@@ -53,7 +61,7 @@ const SignUp = () => {
                     <label className="label text-primary">Name</label>
                     <input type="text" className="input" name='name' placeholder="Name" />
                     <label className="label text-primary">Address</label>
-                    <input type="text" className="input" name='email' placeholder="Address" />
+                    <input type="text" className="input" name='address' placeholder="Address" />
                     <label className="label text-primary">Phone</label>
                     <input type="phone" className="input" name='phone' placeholder="Phone number" />
                     <label className="label text-primary">Photo URL</label>
